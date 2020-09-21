@@ -1,0 +1,24 @@
+{
+  "name": "ChatBot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cep-promise": "^4.0.0",
+    "node-fetch": "^2.6.1",
+    "rxjs": "^6.6.3",
+    "venom-bot": "^2.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  }
+}
