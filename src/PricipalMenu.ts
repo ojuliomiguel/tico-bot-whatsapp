@@ -1,18 +1,18 @@
 import { Message, Whatsapp } from "venom-bot";
-import cep from 'cep-promise';
+import Manager from "./Manager";
+import {callOptionsMenu} from './index'
+import SubMenu from "./SubMenu";
 
-export default class OptionsManager {
-   
-    whats: Whatsapp;
-    constructor(whats: Whatsapp) {
-        this.whats = whats; 
+export default class PricipalMenu implements Manager {
+    constructor(private readonly chatBotSingletonInstance: Whatsapp) {
+
     }
 
     async handleOptions(message: Message) {
         switch (message.body.toLocaleLowerCase()) {
             case "tico": {
                 try {
-                    const result = await this.whats.sendImage(
+                    const result = await this.chatBotSingletonInstance.sendImage(
                         message.from,
                         './assets/bot.jpg',
                         'image-name',
@@ -29,8 +29,12 @@ export default class OptionsManager {
             
             case "1": {
                 
-                this.whats.sendText(message.from, 'Consultando cep...');
+                this.chatBotSingletonInstance.sendText(message.from, 'Consultando cep...');
                 break;
+            }
+
+            case "4": {
+                callOptionsMenu(this.chatBotSingletonInstance, new SubMenu(this.chatBotSingletonInstance))
             }
         
         }
